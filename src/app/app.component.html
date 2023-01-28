@@ -5,13 +5,24 @@
   />
 </div>
 
-<button (click)="onCoursesEdited()">Edit Courses</button>
+<div class="courses" *ngIf="courses[0] as course">
+  <course-card (courseSelected)="onCourseSelected($event)" [course]="course">
+    <div class="course-image">
+      <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
+      <h5>Total Lessons: 6</h5>
+    </div>
 
-<div class="courses" #container>
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+
+    Edit Description: <textarea name="" id="" cols="30" rows="10"></textarea>
+  </course-card>
+
   <course-card
-    *ngFor="let course of courses; index as i"
     (courseSelected)="onCourseSelected($event)"
-    [course]="course"
-    [cardIndex]="i + 1"
-  ></course-card>
+    [course]="courses[2]"
+  >
+    <h5>Total Lessons: 16</h5>
+  </course-card>
 </div>
