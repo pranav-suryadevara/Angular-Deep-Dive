@@ -7,6 +7,7 @@
     *ngIf="course.iconUrl; else noImage"
     alt="Angular Logo"
     [src]="course.iconUrl"
+    #courseImage
   />
 
   <ng-template #noImage><p>No image is available.</p></ng-template>
