@@ -1,4 +1,14 @@
-<div class="course-card" *ngIf="course">
+<!-- <div class="course-card" *ngIf="course" [ngClass]="'beginner'"> -- string with single class -->
+<!-- <div class="" *ngIf="course" [ngClass]="'course-card beginner'"> -- string with multiple classes -->
+<!-- <div class="" *ngIf="course" [ngClass]="['beginner', 'course-card']"> -- array -->
+<!-- <div
+  class=""
+  *ngIf="course"
+  [ngClass]="{ 'course-card': true, beginner: true }" -- configuration object
+> -->
+
+<!-- Function returning configuration object -->
+<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
   <div class="course-title">{{ cardIndex + " - " + course.description }}</div>
   <img
     width="300"

@@ -18,4 +18,16 @@ export class CourseCardComponent {
 
     this.courseSelected.emit(this.course);
   }
+
+  cardClasses() {
+    if (this.course.category === "BEGINNER") {
+      return "beginner";
+    }
+    // if (this.course.category === "BEGINNER") {
+    //   return ["beginner"];
+    // }
+    // return {
+    //   beginner: this.course.category === "BEGINNER",
+    // };
+  }
 }
