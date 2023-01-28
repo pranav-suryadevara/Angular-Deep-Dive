@@ -1,28 +1,25 @@
-<div
-  class="course-card"
-  *ngIf="course"
-  [ngClass]="cardClasses()"
-  [ngStyle]="cardStyles('img')"
->
-  <!-- <div class="course-title" [style.text-decoration]="'underline'">
-    -- We have to use this one similarly for each of the style modifications
-   -->
-
-  <!-- <div class="course-title" [ngStyle]="{ 'text-decoration': 'underline' }"> --configuration object -->
-  <div class="course-title" [ngStyle]="cardStyles('div')">
+<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
+  <div class="course-title" [ngStyle]="cardStyles()">
     {{ cardIndex + " - " + course.description }}
   </div>
-  <!-- <img
+  <img
     width="300"
     *ngIf="course.iconUrl; else noImage"
     alt="Angular Logo"
     [src]="course.iconUrl"
-  /> -->
+  />
 
   <ng-template #noImage><p>No image is available.</p></ng-template>
 
   <div class="course-description">
     {{ course.longDescription }}
+  </div>
+
+  <div class="course-category" [ngSwitch]="course.category">
+    <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+    <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+    <div class="category" *ngSwitchDefault>All Levels</div>
   </div>
 
   <button (click)="onCourseView()">View Course</button>

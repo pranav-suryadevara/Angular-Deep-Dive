@@ -1,5 +1,11 @@
 export const COURSES: any = [
   {
+    id: 12,
+    description: "Git Basics By Pranav",
+    longDescription: "Basics of Git and Source Code Repositories",
+    lessonsCount: 10,
+  },
+  {
     id: 1,
     description: "Angular Core Deep Dive",
     iconUrl:

@@ -26,8 +26,6 @@ export class CourseCardComponent {
   }
 
   cardStyles(input) {
-    if (input == "div") return { "text-decoration": "underline" };
-    if (input == "img")
-      return { "background-image": "url(" + this.course.iconUrl + ")" };
+    return { "text-decoration": "underline" };
   }
 }
