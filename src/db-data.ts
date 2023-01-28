@@ -1,12 +1,4 @@
 export const COURSES: any = [
-  undefined,
-  {
-    id: 12,
-    description: "Git Basics by Pranav",
-    longDescription: "Git Basics",
-    category: "BEGINNER",
-    lessonsCount: 1,
-  },
   {
     id: 1,
     description: "Angular Core Deep Dive",

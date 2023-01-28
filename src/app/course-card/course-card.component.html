@@ -1,21 +1,23 @@
-<!-- <div class="course-card" *ngIf="course" [ngClass]="'beginner'"> -- string with single class -->
-<!-- <div class="" *ngIf="course" [ngClass]="'course-card beginner'"> -- string with multiple classes -->
-<!-- <div class="" *ngIf="course" [ngClass]="['beginner', 'course-card']"> -- array -->
-<!-- <div
-  class=""
+<div
+  class="course-card"
   *ngIf="course"
-  [ngClass]="{ 'course-card': true, beginner: true }" -- configuration object
-> -->
+  [ngClass]="cardClasses()"
+  [ngStyle]="cardStyles('img')"
+>
+  <!-- <div class="course-title" [style.text-decoration]="'underline'">
+    -- We have to use this one similarly for each of the style modifications
+   -->
 
-<!-- Function returning configuration object -->
-<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
-  <div class="course-title">{{ cardIndex + " - " + course.description }}</div>
-  <img
+  <!-- <div class="course-title" [ngStyle]="{ 'text-decoration': 'underline' }"> --configuration object -->
+  <div class="course-title" [ngStyle]="cardStyles('div')">
+    {{ cardIndex + " - " + course.description }}
+  </div>
+  <!-- <img
     width="300"
     *ngIf="course.iconUrl; else noImage"
     alt="Angular Logo"
     [src]="course.iconUrl"
-  />
+  /> -->
 
   <ng-template #noImage><p>No image is available.</p></ng-template>
 

@@ -23,11 +23,11 @@ export class CourseCardComponent {
     if (this.course.category === "BEGINNER") {
       return "beginner";
     }
-    // if (this.course.category === "BEGINNER") {
-    //   return ["beginner"];
-    // }
-    // return {
-    //   beginner: this.course.category === "BEGINNER",
-    // };
+  }
+
+  cardStyles(input) {
+    if (input == "div") return { "text-decoration": "underline" };
+    if (input == "img")
+      return { "background-image": "url(" + this.course.iconUrl + ")" };
   }
 }
