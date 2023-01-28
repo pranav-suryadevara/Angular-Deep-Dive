@@ -5,10 +5,50 @@
   />
 </div>
 
+<div>
+  <div>Date Formatting Pipes =======</div>
+  <div>Start Date: {{ startDate }}</div>
+  <div>-------</div>
+  <div>Start Date: {{ startDate | date }}</div>
+  <div>-------</div>
+  <div>Start Date: {{ startDate | date : "MMM/dd/yyyy" }}</div>
+  <p></p>
+
+  <div>String Formatting Pipes =======</div>
+  <div>TitleCase Pipe: {{ title | titlecase }}</div>
+  <div>-------</div>
+  <div>UpperCase Pipe: {{ title | uppercase }}</div>
+  <div>-------</div>
+  <div>LowerCase Pipe: {{ title | lowercase }}</div>
+  <p></p>
+
+  <div>Nubmer Formatting Pipes =======</div>
+  <div>Three Integer Digits and a min of 3 to max of 5 fraction digits</div>
+  <div>{{ price | number : "3.3-5" }}</div>
+  <div>Currency Pipe: {{ price | currency }}</div>
+  <div>Currency Pipe: {{ price | currency : "GBP" }}</div>
+  <p></p>
+
+  <div>Percentage Formatting Pipes =======</div>
+  <div>Percentage: {{ price | percent }}</div>
+  <p></p>
+
+  <div>JSON Formatting Pipes =======</div>
+  <div>Courses: {{ courses }}</div>
+  <p></p>
+  <div>Courses Formatted: {{ courses | json }}</div>
+  <p></p>
+
+  <div>Object Formatting Pipes =======</div>
+  <div *ngFor="let pair of course | keyvalue">
+    Key: {{ pair.key }}, Value: {{ pair.value }}
+  </div>
+</div>
+
 <div class="courses">
   <course-card
     *ngFor="
-      let course of courses;
+      let course of courses | slice : 0 : 4;
       index as i;
       first as isFirst;
       last as isLast;
