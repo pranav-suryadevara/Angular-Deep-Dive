@@ -5,13 +5,16 @@
 
   <ng-content
     select="course-image"
-    *ngIf="course.iconUrl; else blankImage"
+    *ngIf="course.iconUrl; else noImage"
   ></ng-content>
 
-  <ng-template #blankImage>
-    <p class="warn">No Image is available yet.</p>
-    <p class="warn">{{ course.description }} has no image yet.</p>
-    <img src="/assets/empty-image.png" alt="" />
+  <ng-template #noImage>
+    <ng-conatiner
+      *ngTemplateOutlet="
+        noImageTpl;
+        context: { description: course.description }
+      "
+    ></ng-conatiner>
   </ng-template>
 
   <ng-content select=".course-description"></ng-content>
