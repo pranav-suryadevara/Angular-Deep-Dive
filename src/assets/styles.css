@@ -1,11 +1,24 @@
-course-card {
+/* course-card {
   display: block;
+} */
+
+/* course-card.is-first {
+  border-top: 2px solid grey;
+  padding-top: 20px;
 }
 
-.course-card .course-title {
-  font-size: 27px;
-  font-weight: bold;
+course-card.is-last {
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
 }
+
+course-card.is-even {
+  background: lightgray;
+}
+
+course-card.is-odd {
+  background: lightcyan;
+} */
 
 .course-card .course-description {
   max-width: 360px;
@@ -26,24 +39,6 @@ button {
   background: #1a7ce7;
   color: white;
   border-radius: 4px;
-}
-
-course-card.is-first {
-  border-top: 2px solid grey;
-  padding-top: 20px;
-}
-
-course-card.is-last {
-  border-bottom: 2px solid grey;
-  padding-top: 20px;
-}
-
-course-card.is-even {
-  background: lightgray;
-}
-
-course-card.is-odd {
-  background: lightcyan;
 }
 
 .course-category {
