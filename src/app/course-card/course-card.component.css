@@ -2,6 +2,18 @@
   display: block;
 }
 
+/* .salmon-theme .course-card {  -- doesn't work
+  background: lightsalmon;
+} */
+
+/*::ng-deep .salmon-theme .course-card {  -- makes it a global style
+  background: lightsalmon;
+}  */
+
+:host-context(.salmon-theme) .course-card {
+  background: lightsalmon;
+}
+
 :host.is-first {
   border-top: 2px solid grey;
   padding-top: 20px;
@@ -37,13 +49,6 @@
   font-size: 27px;
   font-weight: bold;
 }
-
-/* .course-card .course-description {
-  max-width: 360px;
-  margin: 0 auto;
-  margin-top: 15px;
-  user-select: none;
-} */
 
 .course-card ::ng-deep .course-description {
   max-width: 360px;
