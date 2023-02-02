@@ -32,9 +32,7 @@ export class CourseCardComponent implements OnInit {
 
   constructor(private coursesService: CoursesService) {}
 
-  ngOnInit() {
-    console.log(this.coursesService);
-  }
+  ngOnInit() {}
 
   onSaveClicked(description: string) {
     this.courseEmitter.emit({ ...this.course, description });
