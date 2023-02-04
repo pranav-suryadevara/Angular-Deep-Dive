@@ -7,18 +7,10 @@
 
 <div>
   <div class="demo"><button (click)="onEditCourse()">Edit Course</button></div>
-  <div class="courses" *ngIf="courses$ | async as courses">
-    <!-- <course-card
-      *ngFor="let course of courses"
-      (courseChanged)="save($event)"
-      [type]="'beginner'"                          using it as an attribute rather than input
-      [course]="course"
-    > -->
-
+  <div class="courses">
     <course-card
       *ngFor="let course of courses"
       (courseChanged)="save($event)"
-      type="beginner"
       [course]="course"
     >
       <course-image [src]="course.iconUrl"></course-image>
