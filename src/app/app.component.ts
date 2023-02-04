@@ -17,17 +17,6 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { CoursesService } from "./services/courses.service";
 
-// @Component({
-//   selector: "app-root",
-//   templateUrl: "./app.component.html",
-//   styleUrls: ["./app.component.css"],
-//   providers: [
-//     {
-//       provide: CoursesService,
-//       useClass: CoursesService,
-//     },
-//   ],
-// })
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -41,6 +30,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.courses$ = this.coursesService.loadCourses();
+
+    console.log("create CoursesService for root " + this.coursesService.id);
   }
 
   save(course: Course) {
