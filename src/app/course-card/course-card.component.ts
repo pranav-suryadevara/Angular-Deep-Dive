@@ -11,6 +11,7 @@ import {
   Output,
   QueryList,
   ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -20,9 +21,7 @@ import { CoursesService } from "../services/courses.service";
   selector: "course-card",
   templateUrl: "./course-card.component.html",
   styleUrls: ["./course-card.component.css"],
-  providers: [
-    // CoursesService
-  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseCardComponent implements OnInit {
   @Input()

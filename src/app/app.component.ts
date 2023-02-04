@@ -27,9 +27,8 @@ export class AppComponent implements OnInit {
   courses = COURSES;
 
   constructor(
-    private coursesService: CoursesService
-  ) // @Inject("CONFIG_TOKEN") private config: AppConfig
-  {}
+    private coursesService: CoursesService // @Inject("CONFIG_TOKEN") private config: AppConfig
+  ) {}
 
   ngOnInit() {}
 
@@ -37,5 +36,13 @@ export class AppComponent implements OnInit {
     this.coursesService
       .saveCourse(course)
       .subscribe(() => console.log("Course Saved"));
+  }
+
+  onEditCourse() {
+    // this.courses[0].description = "New Value!"; //OnPush doesn't change value of the child from parent
+    const course = this.courses[0];
+    const newCourse: any = { ...course };
+    newCourse.description = "New Value";
+    this.courses[0] = newCourse;
   }
 }
