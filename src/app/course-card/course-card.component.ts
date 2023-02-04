@@ -12,6 +12,7 @@ import {
   QueryList,
   ViewEncapsulation,
   ChangeDetectionStrategy,
+  Attribute,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -28,14 +29,27 @@ export class CourseCardComponent implements OnInit {
   course: Course;
 
   @Input()
+  type: string;
+
+  @Input()
   cardIndex: number;
 
   @Output("courseChanged")
   courseEmitter = new EventEmitter<Course>();
 
+  // Alternative way
+  // constructor(
+  //   private coursesService: CoursesService,
+  //   @Attribute("type") private type: string
+  // ) {
+  //   console.log(type);
+  // }
+
   constructor(private coursesService: CoursesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.type);
+  }
 
   onSaveClicked(description: string) {
     this.courseEmitter.emit({ ...this.course, description });

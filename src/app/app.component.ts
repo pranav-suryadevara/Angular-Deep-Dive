@@ -30,16 +30,10 @@ export class AppComponent implements OnInit {
 
   courses: Course[];
 
-  constructor(
-    private coursesService: CoursesService // @Inject("CONFIG_TOKEN") private config: AppConfig
-  ) {}
+  constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {
-    this.courses$ = this.coursesService.loadCourses(); //not using an observable and async in case of OnPush
-
-    // this.coursesService
-    //   .loadCourses()
-    //   .subscribe((courses) => (this.courses = courses));
+    this.courses$ = this.coursesService.loadCourses();
   }
 
   save(course: Course) {
