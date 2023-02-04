@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Inject,
@@ -22,15 +23,24 @@ import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from "./config";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  courses = COURSES;
+  courses$: Observable<Course[]>;
+
+  courses: Course[];
 
   constructor(
     private coursesService: CoursesService // @Inject("CONFIG_TOKEN") private config: AppConfig
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.courses$ = this.coursesService.loadCourses(); //not using an observable and async in case of OnPush
+
+    // this.coursesService
+    //   .loadCourses()
+    //   .subscribe((courses) => (this.courses = courses));
+  }
 
   save(course: Course) {
     this.coursesService
@@ -38,11 +48,5 @@ export class AppComponent implements OnInit {
       .subscribe(() => console.log("Course Saved"));
   }
 
-  onEditCourse() {
-    // this.courses[0].description = "New Value!"; //OnPush doesn't change value of the child from parent
-    const course = this.courses[0];
-    const newCourse: any = { ...course };
-    newCourse.description = "New Value";
-    this.courses[0] = newCourse;
-  }
+  onEditCourse() {}
 }
