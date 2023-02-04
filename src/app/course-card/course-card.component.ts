@@ -11,9 +11,6 @@ import {
   Output,
   QueryList,
   ViewEncapsulation,
-  Self,
-  SkipSelf,
-  Optional,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -23,7 +20,9 @@ import { CoursesService } from "../services/courses.service";
   selector: "course-card",
   templateUrl: "./course-card.component.html",
   styleUrls: ["./course-card.component.css"],
-  providers: [CoursesService],
+  providers: [
+    // CoursesService
+  ],
 })
 export class CourseCardComponent implements OnInit {
   @Input()
@@ -35,9 +34,7 @@ export class CourseCardComponent implements OnInit {
   @Output("courseChanged")
   courseEmitter = new EventEmitter<Course>();
 
-  // constructor(@Self() private coursesService: CoursesService) {} // uses the one delcared in the current class
-  // constructor(@SkipSelf() private coursesService: CoursesService) {} // uses the one delcared in the parent class
-  constructor(@Optional() private coursesService: CoursesService) {} // doesn't give error even if not injected.
+  constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {}
 
