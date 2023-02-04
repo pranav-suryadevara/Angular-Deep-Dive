@@ -30,8 +30,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.courses$ = this.coursesService.loadCourses();
-
-    console.log("create CoursesService for root " + this.coursesService.id);
   }
 
   save(course: Course) {
