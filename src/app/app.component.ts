@@ -22,21 +22,16 @@ import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from "./config";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  providers: [CoursesService],
 })
 export class AppComponent implements OnInit {
-  courses$: Observable<Course[]>;
+  courses = COURSES;
 
   constructor(
-    private coursesService: CoursesService,
-    @Inject("CONFIG_TOKEN") private config: AppConfig
-  ) {
-    console.log(config);
-  }
+    private coursesService: CoursesService
+  ) // @Inject("CONFIG_TOKEN") private config: AppConfig
+  {}
 
-  ngOnInit() {
-    this.courses$ = this.coursesService.loadCourses();
-  }
+  ngOnInit() {}
 
   save(course: Course) {
     this.coursesService

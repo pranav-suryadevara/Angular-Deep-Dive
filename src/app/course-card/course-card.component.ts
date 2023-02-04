@@ -41,4 +41,8 @@ export class CourseCardComponent implements OnInit {
   onSaveClicked(description: string) {
     this.courseEmitter.emit({ ...this.course, description });
   }
+
+  onTitleChanged(newTitle: string): void {
+    this.course.description = newTitle;
+  }
 }
