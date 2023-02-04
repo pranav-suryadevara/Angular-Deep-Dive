@@ -15,7 +15,6 @@ import {
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
 import { CoursesService } from "../services/courses.service";
-import { COURSES_SERIVCE } from "../app.component";
 
 @Component({
   selector: "course-card",
@@ -32,9 +31,7 @@ export class CourseCardComponent implements OnInit {
   @Output("courseChanged")
   courseEmitter = new EventEmitter<Course>();
 
-  constructor(
-    @Inject(COURSES_SERIVCE) private coursesService: CoursesService
-  ) {}
+  constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {}
 
