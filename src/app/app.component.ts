@@ -18,18 +18,10 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { CoursesService } from "./services/courses.service";
 import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from "./config";
 
-// @Component({
-//   selector: "app-root",
-//   templateUrl: "./app.component.html",
-//   styleUrls: ["./app.component.css"],
-//   providers: [{ provide: CONFIG_TOKEN, useFactory: () => APP_CONFIG }], //appears in the bundle even though not injected.
-// })
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  // providers: [{ provide: CONFIG_TOKEN, useValue: APP_CONFIG }],
 })
 export class AppComponent implements OnInit {
   courses$: Observable<Course[]>;
