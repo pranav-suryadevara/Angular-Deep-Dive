@@ -18,6 +18,7 @@ import {
   SimpleChanges,
   AfterContentChecked,
   AfterViewChecked,
+  DoCheck,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -34,7 +35,10 @@ export class CourseCardComponent
     OnDestroy,
     OnChanges,
     AfterContentChecked,
-    AfterViewChecked
+    AfterViewChecked,
+    AfterContentInit,
+    AfterViewInit,
+    DoCheck
 {
   @Input()
   course: Course;
@@ -72,6 +76,18 @@ export class CourseCardComponent
   ngAfterViewChecked(): void {
     console.log("ngAfterViewChecked");
     // this.course.description = ""; // throws error
+  }
+
+  ngAfterContentInit(): void {
+    console.log("ngAfterContentInit");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit");
+  }
+
+  ngDoCheck(): void {
+    console.log("ngDoChekc");
   }
 
   onSaveClicked(description: string) {
