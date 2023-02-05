@@ -67,8 +67,6 @@ export class CourseCardComponent
 
   ngAfterContentChecked(): void {
     console.log("ngAfterContentChecked");
-    this.course.description = "pranav";
-    this.course.category = "ADVANCED";
 
     // this.course.iconUrl = ""; // throws error
   }

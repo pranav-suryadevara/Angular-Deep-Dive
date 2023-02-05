@@ -9,7 +9,7 @@
   <div class="demo"><button (click)="onEditCourse()">Edit Course</button></div>
   <div class="courses">
     <course-card
-      *ngIf="courses[0] as course"
+      *ngFor="let course of courses | filterByCategory : 'BEGINNER'"
       (courseChanged)="save($event)"
       [course]="course"
     >
