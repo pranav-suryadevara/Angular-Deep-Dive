@@ -16,6 +16,7 @@ import {
   OnDestroy,
   OnChanges,
   SimpleChanges,
+  AfterContentChecked,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -27,7 +28,9 @@ import { CoursesService } from "../services/courses.service";
   styleUrls: ["./course-card.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
+export class CourseCardComponent
+  implements OnInit, OnDestroy, OnChanges, AfterContentChecked
+{
   @Input()
   course: Course;
 
@@ -51,6 +54,14 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("ngOnChanges", changes);
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("ngAfterContentChecked");
+    this.course.description = "pranav";
+    this.course.category = "ADVANCED";
+
+    // this.course.iconUrl = ""; // throws error
   }
 
   onSaveClicked(description: string) {
