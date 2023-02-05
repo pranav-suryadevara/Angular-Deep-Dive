@@ -20,7 +20,7 @@ import {
   AfterViewChecked,
   DoCheck,
 } from "@angular/core";
-import { Course } from "../model/course";
+import { Course } from "../../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
 import { CoursesService } from "../services/courses.service";
 
