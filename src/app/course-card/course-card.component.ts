@@ -13,6 +13,7 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
   Attribute,
+  OnDestroy,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -24,7 +25,7 @@ import { CoursesService } from "../services/courses.service";
   styleUrls: ["./course-card.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnDestroy {
   @Input()
   course: Course;
 
@@ -34,9 +35,17 @@ export class CourseCardComponent implements OnInit {
   @Output("courseChanged")
   courseEmitter = new EventEmitter<Course>();
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private coursesService: CoursesService) {
+    console.log("constructor is called", this.course);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("ngOnInit is called", this.course);
+  }
+
+  ngOnDestroy(): void {
+    console.log("ngOnDestroy");
+  }
 
   onSaveClicked(description: string) {
     this.courseEmitter.emit({ ...this.course, description });

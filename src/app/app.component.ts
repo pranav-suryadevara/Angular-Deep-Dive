@@ -25,44 +25,24 @@ import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from "./config";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit, DoCheck {
-  courses$: Observable<Course[]>;
-
-  courses: Course[];
-  loaded: boolean = false;
+export class AppComponent implements OnInit {
+  courses: Course[] = COURSES;
 
   constructor(
     private coursesService: CoursesService,
-    @Inject(CONFIG_TOKEN) private config: AppConfig,
-    private cd: ChangeDetectorRef
+    @Inject(CONFIG_TOKEN) private config: AppConfig
   ) {}
 
-  ngOnInit() {
-    // this.courses$ = this.coursesService.loadCourses();
+  ngOnInit() {}
 
-    this.coursesService.loadCourses().subscribe((courses) => {
-      this.courses = courses;
-      this.loaded = true;
-      // this.cd.markForCheck();
-    });
-  }
-
-  ngDoCheck(): void {
-    console.log("DoCheck called");
-    if (this.loaded) {
-      this.cd.markForCheck();
-      console.log("called cd.markForCheck()");
-
-      this.loaded = false;
-    }
-  }
   save(course: Course) {
     this.coursesService
       .saveCourse(course)
       .subscribe(() => console.log("Course Saved"));
   }
 
-  onEditCourse() {}
+  onEditCourse() {
+    this.courses = [undefined];
+  }
 }
