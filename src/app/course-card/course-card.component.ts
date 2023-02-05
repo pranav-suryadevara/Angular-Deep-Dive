@@ -14,6 +14,8 @@ import {
   ChangeDetectionStrategy,
   Attribute,
   OnDestroy,
+  OnChanges,
+  SimpleChanges,
 } from "@angular/core";
 import { Course } from "../model/course";
 import { CourseImageComponent } from "../course-image/course-image.component";
@@ -25,7 +27,7 @@ import { CoursesService } from "../services/courses.service";
   styleUrls: ["./course-card.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseCardComponent implements OnInit, OnDestroy {
+export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
   @Input()
   course: Course;
 
@@ -45,6 +47,10 @@ export class CourseCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log("ngOnDestroy");
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("ngOnChanges", changes);
   }
 
   onSaveClicked(description: string) {
