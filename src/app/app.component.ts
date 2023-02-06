@@ -7,6 +7,7 @@ import {
   ElementRef,
   Inject,
   InjectionToken,
+  Injector,
   OnInit,
   QueryList,
   ViewChild,
@@ -20,6 +21,8 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from "./config";
 import { CoursesService } from "./courses/services/courses.service";
+import { createCustomElement } from "@angular/elements";
+import { CourseTitleComponent } from "./course-title/course-title.component";
 
 @Component({
   selector: "app-root",
@@ -33,10 +36,17 @@ export class AppComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
-    @Inject(CONFIG_TOKEN) private config: AppConfig
+    @Inject(CONFIG_TOKEN) private config: AppConfig,
+    private injector: Injector
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const htmlElement = createCustomElement(CourseTitleComponent, {
+      injector: this.injector,
+    });
+
+    customElements.define("course-title", htmlElement);
+  }
 
   save(course: Course) {
     this.coursesService
