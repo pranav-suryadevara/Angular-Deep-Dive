@@ -35,6 +35,21 @@
         course.</note>
         <note priority="1" from="meaning">welcome message </note>
       </trans-unit>
+      <trans-unit id="59f9e498b7eea21514458589d03ef629aa970db1" datatype="html">
+        <source><x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div class=&quot;category&quot;&gt;"/> <x id="ICU" equiv-text="{ course.length, select, BEGINNER {Beginnner} INTERMEDIATE {Intermediate}
+      ADVANCED {Advanced} }" xid="5699259157320483246"/> <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/courses/course-card/course-card.component.html</context>
+          <context context-type="linenumber">18,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6cf98fd3a416bbdabf8e4b3f00b988e93dd3e748" datatype="html">
+        <source>{VAR_SELECT, select, BEGINNER {Beginnner} INTERMEDIATE {Intermediate} ADVANCED {Advanced}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/courses/course-card/course-card.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
